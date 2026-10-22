@@ -11,7 +11,9 @@ function fmt(ms) {
 }
 
 window.clock.onState((st) => {
-  document.body.className = `phase-${st.phase}`;
+  document.body.className = `phase-${st.phase}` +
+    (st.mode === 'bar' ? ' mode-bar' : '') +
+    (st.side ? ` side-${st.side}` : '');
   const total = st.durationMin * 60000;
   const frac = total > 0 ? st.remainingMs / total : 0;
   if (st.phase === 'running' || st.phase === 'paused') {
@@ -24,6 +26,15 @@ window.clock.onState((st) => {
     document.getElementById('idle-min').textContent = st.durationMin;
   } else if (st.phase === 'done') {
     prog.style.strokeDashoffset = 0;
+  }
+  const fill = document.getElementById('bar-fill');
+  const barFrac = st.phase === 'done' ? 1 : frac;
+  if (st.side === 'top' || st.side === 'bottom') {
+    fill.style.width = `${barFrac * 100}%`;
+    fill.style.height = '100%';
+  } else {
+    fill.style.height = `${barFrac * 100}%`;
+    fill.style.width = '100%';
   }
 });
 
