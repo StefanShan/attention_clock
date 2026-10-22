@@ -38,12 +38,14 @@ window.clock.onState((st) => {
   }
 });
 
-document.addEventListener('mousedown', () => {
+document.addEventListener('mousedown', (e) => {
+  if (e.button !== 0) return;
   document.body.classList.add('dragging');
   window.clock.mouse('down');
 });
 
-document.addEventListener('mouseup', () => {
+document.addEventListener('mouseup', (e) => {
+  if (e.button !== 0) return;
   document.body.classList.remove('dragging');
   window.clock.mouse('up');
 });
