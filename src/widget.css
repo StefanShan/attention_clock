@@ -110,7 +110,6 @@ body.mode-bar .ring { display: none; }
 .bar {
   display: none;
   position: fixed;
-  inset: 0;
   border-radius: 5px;
   background: rgba(130, 130, 150, 0.4);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -118,6 +117,12 @@ body.mode-bar .ring { display: none; }
 }
 
 body.mode-bar .bar { display: block; }
+
+/* 可见条形固定 15px，贴窗口靠屏幕边的一侧（窗口实际宽度受系统最小宽度限制，可能更宽） */
+body.side-left .bar { left: 0; top: 0; bottom: 0; width: 15px; }
+body.side-right .bar { right: 0; top: 0; bottom: 0; width: 15px; }
+body.side-top .bar { top: 0; left: 0; right: 0; height: 15px; }
+body.side-bottom .bar { bottom: 0; left: 0; right: 0; height: 15px; }
 
 .bar-fill {
   position: absolute;

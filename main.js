@@ -3,7 +3,7 @@ const path = require('path');
 
 const WIDGET_SIZE = 50;      // 圆形窗口
 const BAR_LEN = 140;         // 条形长度
-const BAR_THICK = 30;        // 条形厚度（受 Windows 最小窗口宽度限制）
+const BAR_THICK = 15;        // 可见条形厚度
 const EDGE = 2;
 const PANEL_W = 192;
 const PANEL_H_MAIN = 258;
