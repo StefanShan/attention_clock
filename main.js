@@ -126,9 +126,17 @@ function startDrag() {
     const dist = Math.abs(p.x - dragInfo.px) + Math.abs(p.y - dragInfo.py);
     if (dist > 6) dragInfo.moved = true;
     if (dragInfo.moved) {
-      const nx = Math.round(dragInfo.wx + p.x - dragInfo.px);
-      const ny = Math.round(dragInfo.wy + p.y - dragInfo.py);
-      widgetWin.setPosition(nx, ny);
+      const nx = dragInfo.wx + p.x - dragInfo.px;
+      const ny = dragInfo.wy + p.y - dragInfo.py;
+      // 限制在光标所在显示器的可用区域内，不可拖出屏幕
+      const disp = screen.getDisplayNearestPoint({
+        x: Math.round(nx + WIDGET_SIZE / 2),
+        y: Math.round(ny + WIDGET_SIZE / 2),
+      });
+      const wa = disp.workArea;
+      const cx = Math.round(Math.min(Math.max(nx, wa.x + 2), wa.x + wa.width - WIDGET_SIZE - 2));
+      const cy = Math.round(Math.min(Math.max(ny, wa.y + 2), wa.y + wa.height - WIDGET_SIZE - 2));
+      widgetWin.setPosition(cx, cy);
       if (panelWin.isVisible()) positionPanel();
     }
   }, 16);
