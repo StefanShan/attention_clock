@@ -47,6 +47,6 @@ $('#start').addEventListener('click', () => window.clock.action('start'));
 $('#toggle').addEventListener('click', () => window.clock.action(curPhase === 'paused' ? 'resume' : 'pause'));
 $('#reset').addEventListener('click', () => window.clock.action('reset'));
 $('#ok').addEventListener('click', () => window.clock.action('close-reminder'));
-$('#quit').addEventListener('click', () => window.clock.action('quit'));
+$('#close').addEventListener('click', () => window.clock.hidePanel());
 
 document.addEventListener('contextmenu', (e) => e.preventDefault());

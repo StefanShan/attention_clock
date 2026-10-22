@@ -313,6 +313,14 @@ ipcMain.on('panel-action', (_e, action) => {
 
 ipcMain.on('panel-hide', () => hidePanel());
 
+// 右键悬浮窗：退出应用
+ipcMain.on('widget-context-menu', () => {
+  const win = activeWidget();
+  Menu.buildFromTemplate([
+    { label: '退出', click: () => app.quit() },
+  ]).popup({ window: alive(win) ? win : circleWin });
+});
+
 // ---------- 窗口创建 ----------
 function createWidgetWindow(w, h, show) {
   const win = new BrowserWindow({

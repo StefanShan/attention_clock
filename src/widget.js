@@ -48,5 +48,8 @@ document.addEventListener('mouseup', () => {
   window.clock.mouse('up');
 });
 
-document.addEventListener('contextmenu', (e) => e.preventDefault());
+document.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  window.clock.contextMenu();
+});
 document.addEventListener('dragstart', (e) => e.preventDefault());
