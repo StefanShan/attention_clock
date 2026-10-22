@@ -1,0 +1,13 @@
+# 依赖
+node_modules/
+
+# 打包输出
+release/
+
+# 临时截图（测试用）
+shot*.png
+
+# 日志与系统文件
+*.log
+.DS_Store
+Thumbs.db

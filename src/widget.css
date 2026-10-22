@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { zoom: 0.357; }
+
+html, body {
+  width: 140px;
+  height: 140px;
+  background: transparent;
+  overflow: hidden;
+  user-select: none;
+  cursor: grab;
+  font-family: "Microsoft YaHei UI", "Segoe UI", system-ui, sans-serif;
+}
+
+body.dragging { cursor: grabbing; }
+
+.ring {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ring-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.32);
+  stroke-width: 6;
+}
+
+.ring-prog {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.35s linear, stroke 0.4s;
+}
+
+/* 各阶段配环颜色 */
+.phase-idle .ring-prog { stroke: url(#grad-idle); opacity: 0.9; }
+.phase-running .ring-prog { stroke: url(#grad-run); filter: drop-shadow(0 0 5px rgba(45, 212, 191, 0.65)); }
+.phase-paused .ring-prog { stroke: url(#grad-paused); }
+.phase-done .ring-prog { stroke: url(#grad-done); filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.7)); }
+
+.ball {
+  position: absolute;
+  inset: 13px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(70, 60, 170, 0.35), inset 0 -5px 14px rgba(0, 0, 0, 0.12);
+  transition: background 0.45s;
+}
+
+.phase-idle .ball { background: linear-gradient(145deg, #6366f1, #a855f7); }
+.phase-running .ball { background: linear-gradient(145deg, #0ea5e9, #10b981); }
+.phase-paused .ball { background: linear-gradient(145deg, #f59e0b, #f97316); }
+.phase-done .ball { background: linear-gradient(145deg, #10b981, #22c55e); }
+
+.phase-running .ball { animation: breathe 2.4s ease-in-out infinite; }
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.content { text-align: center; }
+
+.view { display: none; }
+.phase-idle .view-idle { display: block; }
+.phase-running .view-run, .phase-paused .view-run { display: block; }
+.phase-done .view-done { display: block; }
+
+.num {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.unit {
+  display: none;
+}
+
+.time {
+  font-size: 34px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.label {
+  display: none;
+}
+
+.check {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}

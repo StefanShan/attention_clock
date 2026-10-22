@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'" />
+  <link rel="stylesheet" href="panel.css" />
+</head>
+<body class="phase-idle">
+  <div class="card" id="card">
+    <button class="close" id="quit" title="退出应用">×</button>
+    <!-- 视图：待设置（第 2 部分） -->
+    <div class="view" id="view-idle">
+      <div class="title">专注设置</div>
+      <div class="picker">
+        <button class="round" id="dec" title="减少 10 分钟">−</button>
+        <div class="value">
+          <div class="minutes" id="minutes">30</div>
+          <div class="unit">分钟</div>
+        </div>
+        <button class="round" id="inc" title="增加 10 分钟">＋</button>
+      </div>
+      <div class="hint">20 ~ 60 分钟，每次 ±10</div>
+      <button class="primary" id="start">开始专注</button>
+    </div>
+
+    <!-- 视图：专注中 / 已暂停 -->
+    <div class="view" id="view-timer" hidden>
+      <div class="title" id="timer-title">专注进行中</div>
+      <div class="big-time" id="time">30:00</div>
+      <div class="status" id="status">保持专注，加油！</div>
+      <div class="btn-row">
+        <button class="primary" id="toggle">暂停</button>
+        <button class="ghost" id="reset">重置</button>
+      </div>
+    </div>
+
+    <!-- 视图：完成提醒（第 4 部分） -->
+    <div class="view" id="view-done" hidden>
+      <div class="party">🎉</div>
+      <div class="done-title">专注完成！</div>
+      <div class="done-sub">干得漂亮，休息一下吧</div>
+      <button class="primary" id="ok">好的</button>
+    </div>
+  </div>
+  <script src="panel.js"></script>
+</body>
+</html>

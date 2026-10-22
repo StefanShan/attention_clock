@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'" />
+  <link rel="stylesheet" href="widget.css" />
+</head>
+<body class="phase-idle">
+  <svg class="ring" width="140" height="140" viewBox="0 0 140 140">
+    <defs>
+      <linearGradient id="grad-idle" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#818cf8" />
+        <stop offset="100%" stop-color="#c084fc" />
+      </linearGradient>
+      <linearGradient id="grad-run" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#22d3ee" />
+        <stop offset="100%" stop-color="#34d399" />
+      </linearGradient>
+      <linearGradient id="grad-paused" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fbbf24" />
+        <stop offset="100%" stop-color="#fb923c" />
+      </linearGradient>
+      <linearGradient id="grad-done" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#34d399" />
+        <stop offset="100%" stop-color="#4ade80" />
+      </linearGradient>
+    </defs>
+    <circle class="ring-track" cx="70" cy="70" r="62" />
+    <circle class="ring-prog" cx="70" cy="70" r="62" transform="rotate(-90 70 70)" />
+  </svg>
+  <div class="ball">
+    <div class="content">
+      <div class="view view-idle">
+        <div class="num" id="idle-min">30</div>
+        <div class="unit">分钟</div>
+      </div>
+      <div class="view view-run">
+        <div class="time" id="remain">30:00</div>
+        <div class="label" id="phase-label">专注中</div>
+      </div>
+      <div class="view view-done">
+        <div class="check">✓</div>
+        <div class="label">完成</div>
+      </div>
+    </div>
+  </div>
+  <script src="widget.js"></script>
+</body>
+</html>
